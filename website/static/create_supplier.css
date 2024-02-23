@@ -1,0 +1,53 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 500px; /* Adjust the gap between form elements */
+}
+
+.form-row {
+    width: calc(50% - 20px); /* Each row takes up half of the container width */
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-row input,
+.form-row select {
+    width: 300%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.submit-row {
+    margin-top: 20px; /* Add space between the form and the submit button */
+}
+/* Style for the submit button */
+.form-submit-btn {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add rounded corners */
+    cursor: pointer; /* Add cursor pointer on hover */
+}
+
+.form-submit-btn:hover {
+    background-color: #45a049; /* Darker shade on hover */
+}

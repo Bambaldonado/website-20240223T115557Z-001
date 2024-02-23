@@ -1,0 +1,84 @@
+
+    .refresh-btn {
+    color: rgb(36, 0, 0);
+    font-weight: bold;
+}
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    .container {
+        text-align: center;
+        display: flex;
+        height: 100%;
+    }
+    .sidebar {
+        width: 200px; /* Adjust width as needed */
+        background-color: #07db00; /* Sidebar background color */
+        float: left; /* Float the sidebar to the left */
+        padding: 20px; /* Add padding to the sidebar content */
+    }
+    .sidebar ul {
+        list-style-type: none; /* Remove default list styles */
+        padding: 0;
+    }
+    .sidebar ul li {
+        margin-bottom: 10px; /* Add space between menu items */
+    }
+    .sidebar ul li a {
+        text-decoration: none; /* Remove underline from links */
+        color: #333; /* Sidebar menu item text color */
+        display: block; /* Make menu items block-level for full width */
+    }
+    .sidebar ul li a:hover {
+        background-color: #ddd; /* Background color on hover */
+    }
+    .sidebar a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #07db00;
+        }
+        
+        /* Add margin between categories */
+        .sidebar a + a {
+            margin-top: 5px; /* Adjust the margin as needed */
+        }
+        /* Style for dropdown menu */
+        .dropdown {
+            position: relative;
+        }
+
+        /* Style for dropdown content */
+        .dropdown-content {
+          display: none;
+        position: absolute;
+        background-color: #fff; /* Background color of the dropdown */
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Box shadow for the dropdown */
+        z-index: 1;
+        padding: 10px; /* Padding inside the dropdown */
+        border-radius: 4px; /* Border radius for rounded corners */
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        /* Center the text inside the dropdown */
+        .dropdown a {
+        text-align: center;
+      }
+
+        /* Show dropdown content on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Dropdown icon styles */
+        .dropdown .fas.fa-caret-down {
+            margin-left: 5px; /* Add space between text and icon */
+        }
+
+ 

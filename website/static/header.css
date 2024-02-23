@@ -1,0 +1,23 @@
+.dashboard-heading {
+    text-align: center;
+}
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #136901;
+        color: white;
+        padding: 10px 20px;
+    }
+    .logout-btn {
+        background-color: #dc3545; /* Bootstrap danger color */
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .logout-btn:hover {
+        background-color: #c82333; /* Darker shade on hover */
+    }

@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Inventory</title>
+    <!-- Link Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+        integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <style>
+        .custom-primary-bg {
+            background-color: rgb(56, 56, 56);
+            /* Change this to your desired gray color */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col md-12">
+                <br>
+                <div class="jumbotron p-3">
+                    <h2>Manage Employees
+                        <button type="button" class="btn btn-success float-right" data-toggle="modal"
+                            data-target="#mymodal">
+                            <i class="fas fa-plus"></i> Add New User
+                        </button>
+                    </h2>
+
+                    <form action="/employees" method="POST">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Phone Number</th>
+                                    <th>Email Adress</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>BON</td>
+                                    <td>D123</td>
+                                    <td>09123</td>
+                                    <td>bon@gmail.com</td>
+                                    <td>Cashier</td>
+                                    <td>
+                                        <a href="" class="btn btn-warning btn-xs" data-toggle="modal"
+                                            data-target="#">Edit</a>
+                                        <a href="" class="btn btn-danger btn-xs"
+                                            onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <!-- Modal for Employee -->
+                <div id="mymodal" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header custom-primary-bg text-white">
+                                <h5 class="modal-title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-person-plus" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M10 7.5a2 2 0 1 1-4 0A2 2 0 0 1 10 7.5zm1-1.5a3 3 0 0 0-3-3 3 3 0 0 0-3 3A3 3 0 0 0 4 10V12h1a3 3 0 0 0 3 3h2a3 3 0 0 0 3-3h1V10a3 3 0 0 0-3-3h-1z" />
+                                        <path fill-rule="evenodd"
+                                            d="M10.5 4a.5.5 0 0 0-1 0v1.5h-1a.5.5 0 0 0 0 1h1V9a.5.5 0 0 0 1 0V6.5h1a.5.5 0 0 0 0-1h-1V4z" />
+                                    </svg>
+                                    Add New Employee
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Form for adding employee details -->
+                                <form action="/add_user" method="POST">
+                                    <div class="form-group">
+                                        <label for="username">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm6-4a6 6 0 1 1-12 0 6 6 0 0 1 12 0zM4 9a4 4 0 1 1 8 0H4z" />
+                                            </svg>
+                                            Username
+                                        </label>
+                                        <input type="text" class="form-control" id="username" name="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 0a2.52 2.52 0 0 1 2.52 2.5l.013.16a.75.75 0 0 1-.007.098l-.034.202a4.477 4.477 0 0 1-.104.434 4.5 4.5 0 0 1-.186.425l-.157.297A3.988 3.988 0 0 1 8 4a3.988 3.988 0 0 1-1.988-.532l-.157-.297a4.5 4.5 0 0 1-.186-.425 4.477 4.477 0 0 1-.104-.434l-.034-.202a.75.75 0 0 1-.007-.098L5.48 2.5A2.52 2.52 0 0 1 8 0zm3.25 4.047a3 3 0 0 0-5.5 0l-.157.297A2.492 2.492 0 0 0 3.988 6c-.008.099-.017.204-.025.314a5.513 5.513 0 0 0-.06.624l-.013.139-.024.168L3 7.5c-.03.498.084.994.293 1.426l.158.297A3 3 0 0 0 5 11h6a3 3 0 0 0 1.549-5.227l.158-.297A2.99 2.99 0 0 0 13.25 4.05zM8 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
+                                            </svg>
+                                            Password
+                                        </label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phoneNumber">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                                            </svg>
+                                            Phone Number
+                                        </label>
+                                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 3.72v8.565l6.4-4.788L0 3.721zm14.122-.997L8 8.5 1.878 2.724l6.4 4.787h.001L8 9.313l5.121-5.586h-.001 0z" />
+                                                <path
+                                                    d="M1.037 2.067A2.986 2.986 0 0 1 8 0a2.986 2.986 0 0 1 6 2.067L8 7.933 1.037 2.067z" />
+                                            </svg>
+                                            Email Address
+                                        </label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="role">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11 12.5c0-.994-.98-1.5-3-1.5s-3 .506-3 1.5c0 1 2 1.5 3 1.5s3-.5 3-1.5z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M8 0C3.58 0 0 2.686 0 5.5c0 1.272.485 2.443 1.307 3.387C1.921 9.153 3.763 10 8 10s6.079-.847 6.693-1.113C15.515 7.943 16 6.772 16 5.5 16 2.686 12.42 0 8 0zM6.5 8c-2.5 0-3.5-.5-3.5-1s1-1 3.5-1 3.5.5 3.5 1-1 1-3.5 1zm4-5.5c0-.828-.448-1.5-2-1.5s-2 .672-2 1.5c0 .714 1.047 1.292 2 1.455V5c-.778.277-1.585.5-2 .5s-1.222-.223-2-.5v-.545c.953-.163 2-.741 2-1.455 0-.828-.448-1.5-2-1.5s-2 .672-2 1.5c0 .714 1.047 1.292 2 1.455V6c-.778.277-1.585.5-2 .5s-1.222-.223-2-.5v-.545c.953-.163 2-.741 2-1.455 0-.828-.448-1.5-2-1.5S1 1.672 1 2.5c0 .905 1.973 1.584 4 1.495V6c-.778.277-1.585.5-2 .5s-1.222-.223-2-.5v-.545c1.027-.089 4-.59 4-1.955 0 .905 1.973 1.584 4 1.495V6c-.778.277-1.585.5-2 .5s-1.222-.223-2-.5V3.98c.9-.074 1.896-.486 2.723-1.032C6.666 2.31 7.845 2 8 2c.155 0 1.333.31 2.277.948C11.704 3.494 12.7 4.206 13.5 4.45V2.5z" />
+                                            </svg>
+                                            Role
+                                        </label>
+                                        <select class="form-control" id="role" name="role" required>
+                                            <option value="">Select Role</option>
+                                            <option value="Admin">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 14a1 1 0 0 1-.654-.24L3 11.157l1-1 .73-.729a1 1 0 0 1 1.32 1.497l-.727.728a.5.5 0 0 0 .734.686l2.273-2.272a1 1 0 0 1 1.406 1.446l-3 3A1 1 0 0 1 8 14z" />
+                                                    <path
+                                                        d="M7.354 7.354a.5.5 0 0 0-.708 0L1.646 12.646a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708zM9 9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h1V3H4a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3V6h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H9z" />
+                                                </svg>
+                                                Admin
+                                            </option>
+                                            <option value="Cashier">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-cash" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm2.871 2.129a.5.5 0 0 0-.629-.053l-7 4a.5.5 0 0 0 .258.942l7-4a.5.5 0 0 0 .371-.89zM8 14a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0v-.5zM5.879 3.629a.5.5 0 0 0-.628.054l-7 4a.5.5 0 0 0 .258.942l7-4a.5.5 0 0 0 .37-.89zM15 8a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0V8zm-4.75-5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0V3zm.75 6a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0V9zm1.5-6a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0V3zm-.75 6a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0V9zm1.5-6a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0V3zm-.75 6a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0V9zm1.5-6a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0V3zm-.75 6a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0V9zm.75-5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zM8 12.5a.5.5 0 0 0-1 0v.5a.5.5 0 0 0 1 0v-.5z" />
+                                                </svg>
+                                                Cashier
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path
+                                                d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z" />
+                                        </svg>
+                                        Create Employee
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-octagon" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Modal -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="confirmation-content">
+                                <!-- Confirmation content will be dynamically populated here -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="confirm-btn">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('mymodal').querySelector('form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Capture form input values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var email = document.getElementById('email').value;
+            var role = document.getElementById('role').value;
+
+            // Populate confirmation modal with form data
+            var confirmationContent = `
+            <p><strong>Username:</strong> ${username}</p>
+            <p><strong>Password:</strong> ${password}</p>
+            <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+            <p><strong>Email Address:</strong> ${email}</p>
+            <p><strong>Role:</strong> ${role}</p>
+        `;
+
+            document.getElementById('confirmation-content').innerHTML = confirmationContent;
+
+            // Show the confirmation modal
+            $('#confirmationModal').modal('show');
+        });
+
+        // Event listener for confirmation modal confirm button
+        document.getElementById('confirm-btn').addEventListener('click', function () {
+            // Submit the form
+            form.submit();
+        });
+    });
+</script>
+
+</html>
+{% endblock %}
